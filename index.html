@@ -22,7 +22,7 @@
         <div class="header-container">
             <h1 class="logo">
                 <a href="#">
-                    <span class="logo-text">KickBoxing Studio Reaf</span>
+                    <span class="logo-text">KickBoxing<br class="sp-only"> Studio Reaf</span>
                 </a>
             </h1>
             <nav class="nav-menu">
@@ -58,12 +58,14 @@
 
             <div class="fv-pop-container">
                 <div class="fv-pop-text-area">
-                    <div class="pop-bubble">
-                        春日市人気No.1🏆<br>初めてでも安心！
-                    </div>
-                    <div class="pop-campaign-bubble">
-                        <span class="badge-title">今だけの限定特典！</span>
-                        入会金<span class="badge-highlight">半額</span> ＆ 酸素BOX<span class="badge-highlight">無料</span>
+                    <div class="pop-bubbles-wrapper">
+                        <div class="pop-bubble">
+                            春日市人気No.1🏆<br>初めてでも安心！
+                        </div>
+                        <div class="pop-campaign-bubble">
+                            <span class="badge-title">今だけの限定特典！</span>
+                            入会金<span class="badge-highlight">半額</span> ＆ 酸素BOX<span class="badge-highlight">無料</span>
+                        </div>
                     </div>
                     <h2 class="pop-title">
                         <span class="pop-line pop-color-1">心と体を</span><br>
@@ -133,7 +135,7 @@
                 <div class="worry-intro-image">
                     <img src="images/604876267258642693.jpg" alt="充実したジム設備の様子" class="worry-bg-img">
                     <div class="worry-intro-text centered-text">
-                        <h2 class="section-title">そのお悩み Studio Reafが<br>すべて解決します！
+                        <h2 class="section-title">そのお悩み<br class="sp-only"> Studio Reafが<br class="sp-only">すべて解決します！
                         </h2>
                         <p>楽しく、効率よく、理想の自分へ</p>
                     </div>
@@ -145,7 +147,7 @@
         <section id="concept" class="reasons section-padding">
             <div class="container">
                 <p class="section-subtitle">Why Reaf?</p>
-                <h2 class="section-title">Studio Reafが選ばれる3つの理由</h2>
+                <h2 class="section-title">Studio Reafが選ばれる<br class="sp-only">3つの理由</h2>
 
                 <div class="reason-list">
                     <!-- 理由1 -->
@@ -269,7 +271,7 @@
                 <!-- いつでも体験セクション -->
                 <div class="experience-cta">
                     <div class="experience-text">
-                        <h3 class="experience-title">\ 「私にもできるかな？」と思ったら、まずは体験へ！ /</h3>
+                        <h3 class="experience-title">\ 「私にもできるかな？」と<br class="sp-only">思ったら、まずは体験へ！ /</h3>
                         <p class="experience-subtitle">いつでも体験受付中！お気軽にお問い合わせください。</p>
                     </div>
                     <div class="experience-image">
@@ -549,7 +551,23 @@
                 });
             });
 
-            // スマホメニューのトグル (将来的な拡張用、現状はメニューを隠しているので特に何もしないでもOK)
+            // スマホメニューのトグル
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+
+            // メニューリンクをクリックしたら閉じる
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                });
+            });
         });
     </script>
 </body>
