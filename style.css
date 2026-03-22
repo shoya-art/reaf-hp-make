@@ -1,0 +1,2313 @@
+@charset "UTF-8";
+
+/* =========================================================================
+   Variables
+   ========================================================================= */
+:root {
+    --color-primary: #FF6B00;
+    /* エネルギッシュなオレンジ（アクセント） */
+    --color-secondary: #00A651;
+    /* リーフ（葉っぱ）を思わせる爽やかなグリーン */
+    --color-accent: #FFD100;
+    /* 注意を引きたいイエロー */
+    --color-bg-light: #F8F9FA;
+    /* 背景用の薄いグレー */
+    --color-text-main: #333333;
+    /* メインテキスト色 */
+    --color-text-light: #666666;
+    /* サブテキスト色 */
+    --color-white: #FFFFFF;
+    --color-elegant-gray: #798CA6;
+    /* お悩みセクション用の落ち着いたブルーグレー */
+
+    --font-main: 'Noto Sans JP', sans-serif;
+    --font-elegant: 'Noto Serif JP', serif;
+    /* 女性らしい明朝体 */
+
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================================================
+   Reset & Base
+   ========================================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    /* 1rem = 16px */
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--color-text-main);
+    line-height: 1.6;
+    background-color: var(--color-white);
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-padding {
+    padding: var(--spacing-xl) 0;
+}
+
+.bg-gray {
+    background-color: var(--color-bg-light);
+}
+
+/* 共通タイトル スタイル */
+.section-subtitle {
+    text-align: center;
+    color: var(--color-secondary);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+.section-title {
+    text-align: center;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 900;
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+}
+
+/* プレースホルダー（仮画像）用スタイル */
+.placeholder-img {
+    background-color: #E0E0E0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    text-align: center;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    min-height: 300px;
+}
+
+.placeholder-img i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #AAA;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+/* --- Utility Classes for Responsive --- */
+.sp-only {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .sp-only {
+        display: block;
+    }
+}
+
+.flex {
+    display: flex;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .flex {
+        flex-direction: column;
+    }
+}
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+/* =========================================================================
+   Buttons
+   ========================================================================= */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #FF8C00 0%, var(--color-primary) 100%);
+    color: var(--color-white);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.btn-primary i {
+    margin-right: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
+}
+
+.btn-primary.large {
+    font-size: 1.4rem;
+    padding: 1.2rem 3rem;
+}
+
+.btn-primary.white {
+    background: var(--color-white);
+    color: var(--color-primary);
+    border: 2px solid var(--color-white);
+}
+
+.btn-primary.white:hover {
+    background: transparent;
+    color: var(--color-white);
+}
+
+/* =========================================================================
+   Header
+   ========================================================================= */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    height: 80px;
+    transition: all 0.3s ease;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--color-text-main);
+}
+
+.nav-menu ul {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    font-weight: 700;
+    font-size: 1rem;
+    position: relative;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-secondary);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+/* ヘッダー右上の体験予約ボタン */
+.header-cv-btn {
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    background-color: var(--color-primary);
+    padding: 0.6rem 1.5rem;
+    /* よくある質問などと同じトーンの枠サイズ */
+    border-radius: 30px;
+    /* あるいは5pxなど角丸指定 */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.header-cv-btn:hover {
+    background-color: #e66000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 107, 0, 0.3);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text-main);
+    border-radius: 3px;
+}
+
+/* =========================================================================
+   First View (Pop Banner Style)
+   ========================================================================= */
+.fv-pop {
+    min-height: 100vh;
+    padding-top: 80px;
+    /* Header */
+    background: linear-gradient(135deg, #fff9f5 0%, #ffe8d6 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+/* Confetti decorations */
+.confetti {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 1;
+}
+
+.c1 {
+    top: 15%;
+    left: 5%;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 40px solid #ffde59;
+    transform: rotate(30deg);
+}
+
+.c2 {
+    top: 25%;
+    right: 45%;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid #ff5757;
+    transform: rotate(-20deg);
+}
+
+.c3 {
+    bottom: 20%;
+    left: 50%;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid #38b6ff;
+    transform: rotate(45deg);
+}
+
+.c4 {
+    top: 10%;
+    right: 10%;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 60px solid #ff914d;
+    transform: rotate(70deg);
+}
+
+.fv-pop-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+.fv-pop-text-area {
+    flex: 1;
+    max-width: 650px;
+    padding-right: 2rem;
+    animation: fadeIn 1s ease-out;
+}
+
+.pop-bubble {
+    display: inline-block;
+    background-color: white;
+    color: var(--color-text-main);
+    font-weight: 900;
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    border: 3px solid var(--color-text-main);
+    position: relative;
+    margin-bottom: 2rem;
+    transform: rotate(-3deg);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+}
+
+.pop-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 40px;
+    border-width: 15px 15px 0 0;
+    border-style: solid;
+    border-color: var(--color-text-main) transparent transparent transparent;
+}
+
+.pop-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -9px;
+    left: 43px;
+    border-width: 10px 10px 0 0;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+    z-index: 1;
+}
+
+.pop-title {
+    margin-bottom: 2.5rem;
+    line-height: 1.3;
+}
+
+.pop-line {
+    display: inline-block;
+    font-size: 4rem;
+    font-weight: 900;
+    transform: rotate(-3deg);
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    /* Thick white stroke effect using text-shadow */
+    text-shadow:
+        4px 4px 0 #fff, -4px -4px 0 #fff, -4px 4px 0 #fff, 4px -4px 0 #fff,
+        0px 4px 0 #fff, 0px -4px 0 #fff, 4px 0px 0 #fff, -4px 0px 0 #fff,
+        2px 2px 0 #fff, -2px -2px 0 #fff, -2px 2px 0 #fff, 2px -2px 0 #fff,
+        0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.pop-color-1 {
+    color: #E74C3C;
+}
+
+.pop-color-2 {
+    color: #ff2a5f;
+}
+
+.pop-campaign-bubble {
+    display: inline-block;
+    background-color: white;
+    color: var(--color-text-main);
+    font-weight: 900;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    border: 3px solid var(--color-text-main);
+    position: relative;
+    margin-bottom: 2rem;
+    transform: rotate(2deg);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+}
+
+.pop-campaign-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 40px;
+    border-width: 15px 15px 0 0;
+    border-style: solid;
+    border-color: var(--color-text-main) transparent transparent transparent;
+}
+
+.pop-campaign-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -9px;
+    left: 43px;
+    border-width: 10px 10px 0 0;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+    z-index: 1;
+}
+
+.badge-title {
+    font-size: 1.4rem;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.badge-highlight {
+    color: #E74C3C;
+    font-size: 1.6rem;
+}
+
+.fv-pop-image-area {
+    flex: 1;
+    position: relative;
+    max-width: 500px;
+    animation: fadeIn 1s ease-out 0.3s backwards;
+}
+
+.fv-bottom-cta {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.pop-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 4 / 3;
+    /* アスペクト比を固定して見え方を安定させる */
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 20px 20px 0 rgba(255, 107, 0, 0.1);
+    transform: rotate(2deg);
+    background-color: white;
+    margin-left: auto;
+}
+
+.pop-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    /* より顔が見やすい位置に固定 */
+}
+
+.btn-pop-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 900;
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+    transition: transform 0.2s;
+    text-align: center;
+}
+
+.btn-pop-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+
+
+
+/* =========================================================================
+   Worries (お悩み)
+   =========================================================================*/
+/* お悩みセクションの画像活用 */
+.worry-intro-image {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto 4rem;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 20px;
+    display: flex;
+    /* 追加：横並び制御のため */
+    align-items: center;
+}
+
+.worry-bg-img {
+    position: absolute;
+    /* 背景として維持しつつ位置を調整 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4);
+    object-position: center 25%;
+    /* 中央付近に配置 */
+}
+
+.worry-intro-text {
+    position: relative;
+    z-index: 10;
+    color: white;
+    text-align: center;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+/* トレーナーの顔を「その」の左側に配置するための裏技 */
+/* 元の画像が右側に顔がある場合などを考慮しつつ、テキストを右に、顔を左に寄せる */
+.worry-intro-text .section-title {
+    display: block;
+    text-align: center;
+    margin: 0 auto 1.5rem;
+}
+
+.centered-text {
+    text-align: center !important;
+}
+
+.worry-intro-text .section-title {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 2.8rem;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.worry-intro-text p {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 768px) {
+    .worry-intro-image {
+        height: 300px;
+    }
+
+    .worry-intro-text .section-title {
+        font-size: 1.8rem;
+    }
+}
+
+.worries {
+    background-color: var(--color-bg-light);
+    background-image: radial-gradient(#E8ECEF 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.worries-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+}
+
+.worry-item {
+    position: relative;
+    width: 85%;
+}
+
+.worry-item:nth-child(even) {
+    align-self: flex-end;
+}
+
+.worry-img {
+    position: relative;
+    width: 100%;
+    background-color: #E2E8F0;
+    aspect-ratio: 3/2;
+    border-radius: 8px;
+    /* 画像の角を少し丸く */
+    box-shadow: -15px -15px 0px rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    overflow: hidden;
+}
+
+.worry-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.worry-item:nth-child(even) .worry-img {
+    box-shadow: 15px -15px 0px rgba(255, 255, 255, 0.5);
+}
+
+.worry-texts {
+    position: absolute;
+    bottom: -20px;
+    right: -30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    z-index: 2;
+}
+
+.worry-item:nth-child(even) .worry-texts {
+    right: auto;
+    left: -30px;
+    align-items: flex-start;
+}
+
+.worry-text {
+    background-color: var(--color-elegant-gray);
+    color: white;
+    padding: 10px 24px;
+    font-size: 1.1rem;
+    font-family: var(--font-main);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+}
+
+.solution-box {
+    background: linear-gradient(135deg, #ff7e5f 0%, #ff5757 100%);
+    color: white;
+    text-align: center;
+    padding: 3rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(255, 87, 87, 0.3);
+    position: relative;
+}
+
+.solution-box::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 20px 20px 20px;
+    border-style: solid;
+    border-color: transparent transparent #ff7e5f transparent;
+}
+
+.solution-box h3 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+.solution-box h3 span {
+    color: var(--color-accent);
+}
+
+.solution-box p {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* 最終CTAテキスト装飾 */
+.cta-main-text {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--color-text-main);
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* 消去：プレミアム化により統合されました */
+
+.cta-decoration {
+    color: var(--color-accent);
+    font-size: 2.2rem;
+    margin: 0 0.8rem;
+    font-style: normal;
+    font-weight: 900;
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 768px) {
+    .cta-main-text {
+        font-size: 1.2rem;
+    }
+}
+
+/* =========================================================================
+   Reasons (選ばれる理由 - チョコザップ横並び風)
+   ========================================================================= */
+.reasons {
+    background-color: #FFF5EE;
+    /* 優しいオレンジ・ベージュ系の背景で温かみを演出 */
+}
+
+.reason-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.reason-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: var(--color-white);
+    padding: 0 0 2rem 0;
+    /* 画像を上揃えにするために上paddingを削る */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease;
+    border-top: 5px solid var(--color-primary);
+    overflow: hidden;
+    /* 画像の角を丸めるため */
+}
+
+.reason-item:hover {
+    transform: translateY(-5px);
+}
+
+.reason-img {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.reason-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.reason-num {
+    font-family: 'Arial', sans-serif;
+    font-weight: 900;
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    /* もう少し大きく */
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+}
+
+.reason-text {
+    width: 100%;
+    padding: 0 1.5rem;
+    /* テキスト部分に左右の余白を追加 */
+}
+
+.reason-item h3 {
+    font-size: 1.3rem;
+    color: var(--color-primary);
+    /* ブランドカラーを使い視認性アップ */
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    /* 広い画面で1行に保つ */
+    margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 1100px) {
+    .reason-item h3 {
+        white-space: normal;
+        /* 狭い場合は改行を許可 */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .reason-text h3 {
+        font-size: 1.2rem;
+    }
+}
+
+.reason-text p {
+    font-size: 1rem;
+    color: #444;
+    text-align: left;
+    line-height: 1.7;
+}
+
+/* =========================================================================
+   Price & Classes
+   ========================================================================= */
+.price-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.price-card {
+    background-color: var(--color-white);
+    border: 2px solid #EEE;
+    border-radius: var(--border-radius);
+    padding: 3rem 2rem;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.price-card:hover {
+    box-shadow: var(--box-shadow);
+    transform: translateY(-5px);
+}
+
+.price-card.special {
+    border-color: var(--color-primary);
+    box-shadow: 0 10px 30px rgba(255, 107, 0, 0.15);
+}
+
+.ribbon {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-primary);
+    color: white;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.price-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.price-amount {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.price-amount span {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+}
+
+.price-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+}
+
+.price-features {
+    text-align: left;
+}
+
+.price-features li {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.price-features i {
+    color: var(--color-secondary);
+    margin-right: 0.5rem;
+}
+
+.course-list {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+.course-list h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.price-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.price-table th,
+.price-table td {
+    padding: 1.2rem;
+    border-bottom: 1px solid #EEE;
+}
+
+.price-table th {
+    background-color: var(--color-bg-light);
+    font-weight: 700;
+    text-align: center;
+}
+
+.price-table td {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* 料金プラン・カードデザイン */
+.price-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.price-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+    align-items: start;
+}
+
+/* --- 新規：プロフェッショナル料金テーブル --- */
+.price-table-wrapper {
+    margin-bottom: 3rem;
+    overflow-x: auto;
+}
+
+.reaf-price-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.reaf-price-table th,
+.reaf-price-table td {
+    padding: 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.reaf-price-table th {
+    background-color: var(--color-primary);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.reaf-price-table th:last-child {
+    text-align: right;
+}
+
+.reaf-price-table td {
+    font-size: 1.1rem;
+    color: var(--color-text-main);
+    font-weight: 500;
+}
+
+.reaf-price-table td small {
+    display: block;
+    color: var(--color-text-light);
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    font-weight: 400;
+}
+
+.reaf-price-table .price-val {
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    text-align: right;
+}
+
+.reaf-price-table .price-val span {
+    font-size: 0.9rem;
+    margin-left: 0.3rem;
+    font-weight: 500;
+}
+
+.highlight-row {
+    background-color: #FFFDE7;
+    /* 薄い黄色で強調 */
+}
+
+/* 特別パーソナル枠 */
+.personal-pricing-box {
+    background: #fff;
+    border: 2px solid var(--color-primary);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 15px 40px rgba(255, 107, 0, 0.1);
+}
+
+.personal-title {
+    text-align: center;
+    color: var(--color-primary);
+    font-weight: 900;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+.personal-content {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.personal-single,
+.personal-tickets {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.p-label {
+    font-weight: 700;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+}
+
+.p-price {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #333;
+}
+
+@media screen and (max-width: 900px) {
+    .price-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .price-card.recommended {
+        transform: none;
+    }
+}
+
+.price-table tr:last-child td {
+    border-bottom: none;
+}
+
+.note {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    font-weight: normal;
+    display: block;
+    margin-top: 0.8rem;
+    text-align: right;
+}
+
+.campaign-banner {
+    background-color: #00ABC9;
+    /* 参考画像のような青緑系 */
+    border-radius: 8px;
+    padding: 4rem 1.5rem 2.5rem;
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.campaign-banner-label {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFD700;
+    /* ポップな黄色 */
+    color: #00ABC9;
+    padding: 0.8rem 3rem;
+    font-weight: 900;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.1em;
+}
+
+.campaign-banner-label::before,
+.campaign-banner-label::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 28px solid transparent;
+    border-bottom: 28px solid transparent;
+}
+
+.campaign-banner-label::before {
+    left: -20px;
+    border-right: 20px solid #FFD700;
+}
+
+.campaign-banner-label::after {
+    right: -20px;
+    border-left: 20px solid #FFD700;
+}
+
+.campaign-banner-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1.5rem;
+}
+
+.campaign-banner-item {
+    background-color: #FFF;
+    border-radius: 8px;
+    padding: 2.5rem 1.5rem 1.5rem;
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.campaign-banner-number {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    background-color: #FFD700;
+    color: #00ABC9;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 900;
+    border: 4px dashed #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.campaign-banner-item-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #EEE;
+    padding-bottom: 0.5rem;
+    width: 100%;
+}
+
+.campaign-banner-item-price {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: bold;
+}
+
+.campaign-banner-item-price .strikethrough {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+.campaign-banner-item-price strong {
+    font-size: 3rem;
+    color: #FF4081;
+    /* ポップなピンク */
+    display: block;
+    margin-top: 0.5rem;
+    line-height: 1;
+}
+
+@media (max-width: 768px) {
+    .campaign-banner-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .campaign-banner-item {
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 1rem;
+    }
+
+    .campaign-banner-label {
+        font-size: 1.2rem;
+        padding: 0.6rem 2rem;
+    }
+}
+
+.cta-banner {
+    background-color: #fff;
+    padding: 5rem 2rem;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(255, 107, 0, 0.08);
+    margin: 5rem auto 2rem;
+    /* 指示に基づき、下部の余白を詰めました */
+    max-width: 850px;
+    position: relative;
+}
+
+.cta-banner .visible-text {
+    font-size: 2.6rem;
+    color: var(--color-primary);
+    margin-bottom: 3rem;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+    font-weight: 900;
+}
+
+@media screen and (max-width: 768px) {
+    .cta-banner {
+        padding: 4rem 1.5rem;
+    }
+
+    .cta-banner .visible-text {
+        font-size: 1.6rem;
+    }
+}
+
+/* =========================================================================
+   Experience CTA
+   ========================================================================= */
+.experience-cta {
+    margin-top: 4rem;
+    text-align: center;
+    padding: 3rem;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.experience-title {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 900;
+}
+
+.experience-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #444;
+}
+
+.experience-image {
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+}
+
+.exp-img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.experience-btn-wrapper {
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .experience-cta {
+        padding: 2rem 1rem;
+    }
+
+    .experience-title {
+        font-size: 1.4rem;
+    }
+
+    .experience-subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* =========================================================================
+   Trainer
+   ========================================================================= */
+.trainer-box {
+    display: flex;
+    gap: 3rem;
+    background-color: var(--color-white);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.trainer-img {
+    flex: 0 0 320px;
+    aspect-ratio: 3 / 4;
+    /* 縦横比を固定 */
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.trainer-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    /* 顔がよく見えるように調整 */
+}
+
+.trainer-info {
+    flex: 1;
+}
+
+.trainer-info h3 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 0.2rem;
+}
+
+.trainer-title {
+    color: var(--color-primary);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.trainer-message {
+    background-color: var(--color-bg-light);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    position: relative;
+}
+
+.trainer-message::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: -10px;
+    border-width: 10px 10px 10px 0;
+    border-style: solid;
+    border-color: transparent var(--color-bg-light) transparent transparent;
+}
+
+/* =========================================================================
+   Flow (入会までの流れ - 縦型タイムライン)
+   ========================================================================= */
+.timeline-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 3rem auto 0;
+    position: relative;
+}
+
+/* 縦の線（左側の数字ブロックを繋ぐ線） */
+.timeline-flow::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 45px;
+    /* 数字ブロックの中心あたり */
+    width: 4px;
+    background-color: #EEE;
+    z-index: 0;
+}
+
+.timeline-step {
+    display: flex;
+    align-items: stretch;
+    position: relative;
+    z-index: 1;
+}
+
+.timeline-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    bottom: -1.5rem;
+    /* gapの分だけ下へ伸ばす */
+    left: 45px;
+    width: 6px;
+    z-index: 0;
+    transform: translateX(-50%);
+}
+
+.timeline-num {
+    width: 90px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: 900;
+    margin-right: -10px;
+    /* 右側のボックスと重ねるため */
+    z-index: 2;
+    padding: 1.5rem 0;
+}
+
+.timeline-content {
+    flex-grow: 1;
+    background-color: white;
+    border: 3px solid;
+    border-radius: 10px;
+    padding: 1.5rem 2rem 1.5rem 3rem;
+    /* 左側は数字ブロックと重なるので余白広め */
+    z-index: 1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-content h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+    font-size: 1rem;
+    color: var(--color-text-main);
+    line-height: 1.6;
+}
+
+/* --- カラーバリエーション --- */
+/* Step 01: Orange */
+.step-orange .timeline-num {
+    background-color: #F59D16;
+}
+
+.step-orange .timeline-content {
+    border-color: #F59D16;
+}
+
+.step-orange .timeline-content h3 {
+    color: #F59D16;
+}
+
+.step-orange:not(:last-child)::after {
+    background-color: #F59D16;
+}
+
+/* Step 02: Red/Pink */
+.step-red .timeline-num {
+    background-color: #EC3746;
+}
+
+.step-red .timeline-content {
+    border-color: #EC3746;
+}
+
+.step-red .timeline-content h3 {
+    color: #EC3746;
+}
+
+.step-red:not(:last-child)::after {
+    background-color: #EC3746;
+}
+
+/* Step 03: Green */
+.step-green .timeline-num {
+    background-color: #7BBF34;
+}
+
+.step-green .timeline-content {
+    border-color: #7BBF34;
+}
+
+.step-green .timeline-content h3 {
+    color: #7BBF34;
+}
+
+.step-green:not(:last-child)::after {
+    background-color: #7BBF34;
+}
+
+/* Step 04: Blue */
+.step-blue .timeline-num {
+    background-color: #48B2CF;
+}
+
+.step-blue .timeline-content {
+    border-color: #48B2CF;
+}
+
+.step-blue .timeline-content h3 {
+    color: #48B2CF;
+}
+
+.step-blue:not(:last-child)::after {
+    background-color: #48B2CF;
+}
+
+/* Step 05: Purple */
+.step-purple .timeline-num {
+    background-color: #A461D8;
+}
+
+.step-purple .timeline-content {
+    border-color: #A461D8;
+}
+
+.step-purple .timeline-content h3 {
+    color: #A461D8;
+}
+
+/* =========================================================================
+   FAQ (アコーディオン形式)
+   ========================================================================= */
+.faq {
+    background-color: #F8F9FA;
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+/* アコーディオンのボタン部分 (Q) */
+.faq-q {
+    padding: 1.5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.faq-q:hover {
+    background-color: rgba(255, 107, 0, 0.03);
+}
+
+.faq-q-icon {
+    color: var(--color-primary);
+    font-size: 1.4rem;
+    font-weight: 900;
+    margin-right: 1rem;
+    min-width: 30px;
+}
+
+.faq-q-text {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+/* ＋ ボタンのアイコン */
+.faq-toggle-icon {
+    position: absolute;
+    right: 1.5rem;
+    width: 20px;
+    height: 20px;
+}
+
+.faq-toggle-icon::before,
+.faq-toggle-icon::after {
+    content: '';
+    position: absolute;
+    background-color: var(--color-text-light);
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+}
+
+.faq-toggle-icon::before {
+    top: 9px;
+    left: 0;
+    width: 20px;
+    height: 2px;
+}
+
+.faq-toggle-icon::after {
+    top: 0;
+    left: 9px;
+    width: 2px;
+    height: 20px;
+}
+
+/* アコーディオンが開いた状態の＋ボタン（×になる） */
+.faq-item.active .faq-toggle-icon::after {
+    transform: rotate(90deg);
+}
+
+.faq-item.active .faq-q {
+    color: var(--color-primary);
+}
+
+/* アコーディオンの答え部分 (A) */
+.faq-a {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    display: none;
+    /* 初期状態は非表示 */
+    border-top: 1px dashed #EEE;
+    margin-top: 0.5rem;
+    padding-top: 1.5rem;
+}
+
+.faq-a-inner {
+    display: flex;
+    align-items: flex-start;
+}
+
+.faq-a-icon {
+    color: var(--color-secondary);
+    font-size: 1.4rem;
+    font-weight: 900;
+    margin-right: 1rem;
+    min-width: 30px;
+}
+
+.faq-a-text {
+    color: var(--color-text-light);
+    line-height: 1.8;
+}
+
+/* =========================================================================
+   Access
+   ========================================================================= */
+.access-content {
+    display: flex;
+    gap: 3rem;
+    background-color: var(--color-white);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.access-info {
+    flex: 1;
+}
+
+.access-info h3 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+}
+
+.access-info dl {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 1rem 0;
+}
+
+.access-info dt {
+    font-weight: 700;
+    color: var(--color-secondary);
+    border-bottom: 1px dashed #EEE;
+    padding-bottom: 0.5rem;
+}
+
+.access-info dd {
+    border-bottom: 1px dashed #EEE;
+    padding-bottom: 0.5rem;
+}
+
+.close-day {
+    display: inline-block;
+    color: #E74C3C;
+    font-weight: 700;
+    margin-top: 0.5rem;
+}
+
+.access-map {
+    flex: 1;
+    min-height: 300px;
+}
+
+/* =========================================================================
+   Footer
+   ========================================================================= */
+/* 最終CTAプレミアム化 */
+.footer-cta {
+    position: relative;
+    padding: 10rem 1rem;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/trainer.jpg');
+    background-attachment: scroll;
+    /* 指示に基づき、テキストと一緒に動くように変更 */
+    background-position: center 10%;
+    /* 顔をより上方に配置するため 20% から 10% へ調整 */
+    background-repeat: no-repeat;
+    background-size: 150%;
+    /* 指示に基づきズーム。130% から 150% へさらに強調 */
+}
+
+.footer-cta-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* パララックスを維持しつつスライドさせないための高度な設定（スクロールと一緒に背景を少し動かす等も検討したが、まずはシンプルに同期させる） */
+
+/* スマホ等でfixedが効かない場合のフォールバック */
+@supports (-webkit-overflow-scrolling: touch) {
+    .footer-cta {
+        background-attachment: scroll;
+    }
+}
+
+/* 上部の境界をギザギザや波のように柔らかく見せる装飾（任意だがトンマナに合わせる） */
+.footer-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background-image: radial-gradient(circle at 10px 0, transparent 10px, #ff7e5f 11px);
+    background-size: 20px 20px;
+    background-repeat: repeat-x;
+    transform: translateY(-100%);
+}
+
+.footer-cta .btn-primary {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+    border: none;
+}
+
+.footer-cta h2 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.footer-cta p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.cta-main-text {
+    color: white;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+    .cta-main-text {
+        font-size: 1.5rem;
+    }
+}
+
+.footer-bottom {
+    background-color: #fff9f5;
+    /* ヘッダーやFVに近い温かいクリーム色 */
+    color: var(--color-text-main);
+    padding: 3rem 0;
+    text-align: center;
+    border-top: 2px dashed #ffb8a1;
+}
+
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.footer-links a {
+    color: var(--color-text-light);
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: var(--color-primary);
+}
+
+.copyright {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* =========================================================================
+   Floating Button
+   ========================================================================= */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    height: 100%;
+}
+
+/* 消去：シンプルに戻しました */
+
+.header-cv-btn {
+    background: linear-gradient(135deg, #ff6b00, #ff8c00);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+}
+
+.floating-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+}
+
+.floating-btn a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+    animation: pulse 2s infinite;
+}
+
+/* =========================================================================
+   Animations
+   ========================================================================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 4px 25px rgba(255, 107, 0, 0.6);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);
+    }
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+/* =========================================================================
+   Responsive Design
+   ========================================================================= */
+@media screen and (max-width: 992px) {
+    .fv-pop-container {
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 1rem;
+    }
+
+    .fv-pop-text-area {
+        padding-right: 0;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .pop-bubble {
+        margin: 0 auto 1.5rem auto;
+    }
+
+    .pop-bubble::after {
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 15px 15px 0 15px;
+        bottom: -15px;
+        border-color: var(--color-text-main) transparent transparent transparent;
+    }
+
+    .pop-bubble::before {
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 10px 10px 0 10px;
+        bottom: -9px;
+        border-color: white transparent transparent transparent;
+        z-index: 1;
+    }
+
+    .pop-line {
+        font-size: 2.6rem;
+    }
+
+    .pop-campaign-bubble {
+        margin: 0 auto 2rem auto;
+        display: inline-block;
+    }
+
+    .pop-campaign-bubble::after {
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 15px 15px 0 15px;
+        bottom: -15px;
+        border-color: var(--color-text-main) transparent transparent transparent;
+    }
+
+    .pop-campaign-bubble::before {
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 10px 10px 0 10px;
+        bottom: -9px;
+        border-color: white transparent transparent transparent;
+        z-index: 1;
+    }
+
+    .pop-image-wrapper {
+        height: auto;
+        aspect-ratio: 16 / 9;
+        /* スマホ・タブレットではよりワイドに */
+        margin: 0 auto;
+    }
+
+    .worry-item,
+    .worry-item:nth-child(even) {
+        width: 90%;
+        align-self: center;
+    }
+
+    .worry-texts,
+    .worry-item:nth-child(even) .worry-texts {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        align-items: center;
+        margin-top: -30px;
+    }
+
+    .worry-text {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        white-space: normal;
+    }
+
+    .reason-list {
+        flex-direction: column;
+    }
+
+    .reason-item {
+        margin-bottom: 1rem;
+    }
+
+    .trainer-box {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .trainer-img {
+        min-height: 300px;
+        flex: auto;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --spacing-md: 1.5rem;
+        --spacing-lg: 3rem;
+        --spacing-xl: 4rem;
+    }
+
+    /* Header */
+    .nav-menu {
+        display: none;
+    }
+
+    .btn-cv-header {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Timeline Mobile */
+    .timeline-flow::before {
+        left: 35px;
+    }
+
+    .timeline-step:not(:last-child)::after {
+        left: 35px;
+    }
+
+    .timeline-num {
+        width: 70px;
+        font-size: 1.5rem;
+        padding: 1rem 0;
+        margin-right: -15px;
+    }
+
+    .timeline-content {
+        padding: 1.2rem 1rem 1.2rem 2.5rem;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .timeline-content p {
+        font-size: 0.9rem;
+    }
+
+    /* FAQ */
+    .faq-q {
+        padding: 1.2rem;
+        font-size: 1rem;
+    }
+
+    .faq-a {
+        padding: 0 1.2rem 1.2rem 1.2rem;
+    }
+
+    /* Access */
+    .access-content {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .access-info dl {
+        grid-template-columns: 80px 1fr;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --spacing-md: 1.5rem;
+        --spacing-lg: 3rem;
+        --spacing-xl: 4rem;
+    }
+
+    /* Header */
+    .nav-menu {
+        display: none;
+    }
+
+    .btn-cv-header {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+
+    /* Price / Map */
+    .price-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .access-content {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+
+    .access-info dl {
+        grid-template-columns: 1fr;
+        gap: 0.2rem 0;
+    }
+
+    .access-info dt {
+        border-bottom: none;
+        padding-top: 1rem;
+    }
+
+    .fv-pop {
+        padding-top: 60px;
+    }
+
+    .pop-bubble {
+        font-size: 1.1rem;
+        padding: 0.8rem 1.2rem;
+    }
+
+    .pop-campaign-bubble {
+        font-size: 0.9rem;
+        padding: 0.8rem 1rem;
+    }
+
+    .badge-title {
+        font-size: 1.1rem;
+    }
+
+    /* Header */
+    .header-logo img {
+        height: 35px;
+    }
+
+    .pop-line {
+        font-size: 2rem;
+    }
+
+    .btn-pop-primary {
+        font-size: 1.1rem;
+        padding: 1rem 2rem;
+    }
+
+    .pop-image-wrapper {
+        height: 250px;
+        border-radius: 20px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    /* Footer */
+    .footer-cta h2 {
+        font-size: 1.6rem;
+    }
+
+    .floating-btn {
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .floating-btn a {
+        padding: 0.8rem 1.2rem;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .section-padding {
+        padding: 40px 0;
+    }
+
+    .pop-line {
+        font-size: 1.6rem;
+    }
+
+    .pop-bubble {
+        font-size: 0.95rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .pop-campaign-bubble {
+        font-size: 0.8rem;
+        padding: 0.6rem 0.8rem;
+    }
+
+    .badge-title {
+        font-size: 0.95rem;
+    }
+
+    .btn-pop-primary {
+        font-size: 1rem;
+        padding: 1rem 1.5rem;
+    }
+
+    .pop-image-wrapper {
+        height: 200px;
+    }
+
+    .footer-cta-text {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .price-table th,
+    .price-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .price-table th {
+        padding-bottom: 0.5rem;
+    }
+
+    .price-table td {
+        padding-top: 0;
+        padding-bottom: 1.5rem;
+    }
+}
