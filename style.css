@@ -254,6 +254,9 @@ img {
     font-size: 1.5rem;
     font-weight: 900;
     color: var(--color-text-main);
+    font-style: italic;
+    white-space: nowrap;
+    display: inline-block;
 }
 
 .nav-menu ul {
@@ -1794,8 +1797,7 @@ img {
     background-position: center 10%;
     /* 顔をより上方に配置するため 20% から 10% へ調整 */
     background-repeat: no-repeat;
-    background-size: 150%;
-    /* 指示に基づきズーム。130% から 150% へさらに強調 */
+    background-size: cover;
 }
 
 .footer-cta-content {
@@ -2162,7 +2164,7 @@ img {
     .fv-pop-text-area {
         padding-right: 0;
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 0;
     }
 
     .pop-bubbles-wrapper {
@@ -2191,6 +2193,10 @@ img {
 
     .badge-title {
         font-size: 0.9rem;
+    }
+
+    .pop-title {
+        margin-bottom: 0.5rem;
     }
 
     .pop-line {
@@ -2365,9 +2371,8 @@ img {
         margin-top: 1rem !important;
     }
 
-    /* Flow Title Mobile */
     .flow .section-title {
-        font-size: 1.5rem !important;
+        font-size: 1.25rem !important;
     }
 
     /* Footer Mobile */
