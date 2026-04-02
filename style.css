@@ -1050,11 +1050,9 @@ img {
     color: white;
     font-size: 1.1rem;
     font-weight: 700;
+    text-align: center;
 }
 
-.reaf-price-table th:last-child {
-    text-align: right;
-}
 
 .reaf-price-table td {
     font-size: 1.1rem;
@@ -1937,13 +1935,13 @@ img {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    background: linear-gradient(135deg, #FF8C00 0%, var(--color-primary) 100%);
     color: white;
     padding: 1rem 1.5rem;
     border-radius: 50px;
     font-weight: 900;
     font-size: 1.1rem;
-    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
     animation: pulse 2s infinite;
 }
 
