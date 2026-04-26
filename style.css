@@ -1385,15 +1385,62 @@ img {
 /* =========================================================================
    Trainer
    ========================================================================= */
+.trainer-slider-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.trainer-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    cursor: grab;
+}
+
+.trainer-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.trainer-slider.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+}
+
+.trainer-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+}
+
+.trainer-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background-color: #ccc;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.trainer-dot.active {
+    background-color: var(--color-primary);
+    transform: scale(1.3);
+}
+
 .trainer-box {
     display: flex;
+    flex: 0 0 100%;
     gap: 3rem;
     background-color: var(--color-white);
     padding: 3rem;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
-    max-width: 900px;
-    margin: 0 auto;
+    scroll-snap-align: start;
+    user-select: none;
 }
 
 .trainer-img {
@@ -1443,6 +1490,46 @@ img {
     border-width: 10px 10px 10px 0;
     border-style: solid;
     border-color: transparent var(--color-bg-light) transparent transparent;
+}
+
+/* Swiper トレーナー紹介（.trainer-slider とは別構成） */
+.trainer-swiper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+    position: relative;
+}
+
+.trainer-swiper .swiper-slide {
+    height: auto;
+}
+
+.trainer-swiper .trainer-box {
+    flex: 1 1 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.trainer-swiper .swiper-pagination {
+    bottom: 0 !important;
+}
+
+.trainer-swiper .swiper-button-prev,
+.trainer-swiper .swiper-button-next {
+    color: var(--color-primary);
+}
+
+.trainer-swiper .swiper-button-prev::after,
+.trainer-swiper .swiper-button-next::after {
+    font-size: 1.35rem;
+}
+
+@media (max-width: 768px) {
+
+    .trainer-swiper .swiper-button-prev,
+    .trainer-swiper .swiper-button-next {
+        display: none;
+    }
 }
 
 /* =========================================================================

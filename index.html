@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KickBoxing Studio Reaf | はじめてでも安心！春日市のキックボクシングスタジオ</title>
     <meta name="description" content="春日市で人気No.1！女性や初心者でも安心して通えるキックボクシングスタジオReaf（リーフ）。朝キック、キッズクラス、酸素BOXも完備。体験予約受付中！">
-    <link rel="stylesheet" href="style.css?v=27">
+    <link rel="stylesheet" href="style.css?v=29">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +14,8 @@
         rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -90,55 +92,7 @@
 
         </section>
 
-        <!-- お悩み・共感セクション -->
-        <section class="worries section-padding" style="padding-bottom: 2rem;">
-            <div class="worry-container">
-                <div class="worry-list">
-                    <h2 class="section-title">こんなお悩みありませんか？</h2>
-                    <div class="worries-list">
-                        <div class="worry-item">
-                            <div class="worry-img">
-                                <img src="images/worry_v3_1.png" alt="運動不足に悩む女性">
-                            </div>
-                            <div class="worry-texts">
-                                <span class="worry-text">運動不足を解消したいけど、</span>
-                                <span class="worry-text">普通のジムは周りの目が気になって</span>
-                                <span class="worry-text">長続きしない…。</span>
-                            </div>
-                        </div>
-                        <div class="worry-item">
-                            <div class="worry-img">
-                                <img src="images/worry_v3_2.png" alt="不安を感じる女性">
-                            </div>
-                            <div class="worry-texts">
-                                <span class="worry-text">キックボクシングには興味があるけど、</span>
-                                <span class="worry-text">「痛そう」「怖そう」という</span>
-                                <span class="worry-text">イメージがあって敷居が高い。</span>
-                            </div>
-                        </div>
-                        <div class="worry-item">
-                            <div class="worry-img">
-                                <img src="images/worry_v3_3.png" alt="ストレス発散したい女性">
-                            </div>
-                            <div class="worry-texts">
-                                <span class="worry-text">ダイエットを始めても続かず、</span>
-                                <span class="worry-text">日々のストレスも溜まっている…。</span>
-                                <span class="worry-text">楽しく発散しながら痩せたい！</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="worry-intro-image">
-                    <img src="images/604876267258642693.jpg" alt="充実したジム設備の様子" class="worry-bg-img">
-                    <div class="worry-intro-text centered-text">
-                        <h2 class="section-title">そのお悩み<br class="sp-only"> Studio Reafが<br class="sp-only">すべて解決します！
-                        </h2>
-                        <p>楽しく、効率よく、理想の自分へ</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- 選ばれる理由 -->
         <section id="concept" class="reasons section-padding">
@@ -222,6 +176,10 @@
                                     <td class="price-val">¥6,600〜</td>
                                 </tr>
                                 <tr>
+                                    <td>学生会員<br><small>中・高・大対象</small></td>
+                                    <td class="price-val">¥8,800〜</td>
+                                </tr>
+                                <tr>
                                     <td>ビジター料金<br><small>まずは1回試してみたい方に</small></td>
                                     <td class="price-val">¥3,300〜</td>
                                 </tr>
@@ -290,19 +248,46 @@
                 <p class="section-subtitle">Trainer</p>
                 <h2 class="section-title">トレーナー紹介</h2>
 
-                <div class="trainer-box">
-                    <div class="trainer-img">
-                        <img src="images/trainer.jpg" alt="代表トレーナー RUI">
-                    </div>
-                    <div class="trainer-info">
-                        <h3>RUI</h3>
-                        <p class="trainer-title">メイン代表トレーナー</p>
-                        <div class="trainer-message">
-                            <p>「格闘技はちょっと怖い…」そんなイメージを変えたいという思いでStudio Reafを作りました。<br>
-                                ダイエットしたい方、ストレスを発散したい方、そしてもちろん試合に出てみたい方まで、1人ひとりの目的に合わせて全力でサポートします！<br>
-                                まずは体験で、ミットにパンチやキックを打ち込む爽快感を味わってみてください。“人生を楽しむための身体”を一緒に作っていきましょう！</p>
+                <div class="trainer-swiper swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Trainer 1 -->
+                        <div class="swiper-slide">
+                            <div class="trainer-box">
+                                <div class="trainer-img">
+                                    <img src="images/trainer.jpg" alt="代表トレーナー RUI">
+                                </div>
+                                <div class="trainer-info">
+                                    <h3>RUI</h3>
+                                    <p class="trainer-title">メイン代表トレーナー</p>
+                                    <div class="trainer-message">
+                                        <p>「格闘技はちょっと怖い…」そんなイメージを変えたいという思いでStudio Reafを作りました。<br>
+                                            ダイエットしたい方、ストレスを発散したい方、そしてもちろん試合に出てみたい方まで、1人ひとりの目的に合わせて全力でサポートします！<br>
+                                            まずは体験で、ミットにパンチやキックを打ち込む爽快感を味わってみてください。“人生を楽しむための身体”を一緒に作っていきましょう！</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trainer 2 -->
+                        <div class="swiper-slide">
+                            <div class="trainer-box">
+                                <div class="trainer-img">
+                                    <img src="images/trainer3.jpg" alt="トレーナー ケンゴ">
+                                </div>
+                                <div class="trainer-info">
+                                    <h3>ケンゴ</h3>
+                                    <p class="trainer-title">トレーナー</p>
+                                    <div class="trainer-message">
+                                        <p>Studio Reafは”頑張る場所”であると同時に、“楽しめる場所”であってほしいと考えています。厳しすぎるトレーニングではなく、続けやすさを大切にしたトレーニングを提供しています。笑顔で通える環境づくりを心がけていますので、ぜひお気軽にお越しください！</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <!-- Pagination & Navigation -->
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
             </div>
         </section>
@@ -359,7 +344,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </section>
 
@@ -470,7 +454,7 @@
                                 10:00〜16:00<br>
                                 【キッズクラス】<br>
                                 水 17:00〜18:00 / 土 11:00〜12:00<br>
-                                <span class="close-day">※日曜日 定休日</span>
+                                <span class="close-day">※日曜日・祝日 定休日</span>
                             </dd>
                         </dl>
                     </div>
@@ -520,9 +504,35 @@
         </a>
     </div>
 
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- JavaScript (アコーディオンやスマホメニューの動作) -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Swiperの初期化
+            const trainerSwiper = new Swiper('.trainer-swiper', {
+                loop: true,
+                speed: 800,
+                spaceBetween: 30,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                breakpoints: {
+                    768: {
+                        spaceBetween: 50,
+                    }
+                }
+            });
+
             // アコーディオンFAQ
             const faqItems = document.querySelectorAll('.faq-item');
 
